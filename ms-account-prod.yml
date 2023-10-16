@@ -1,0 +1,36 @@
+
+spring:
+  application:
+    name: currency
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/arquitectura
+          jwk-set-uri: ${spring.security.oauth2.resource-server.jwt.issuer-uri}/protocol/openid-connect/certs
+  datasource:
+    type: org.postgresql.jdbc2.optional.SimpleDataSource
+    username: postgres
+    password: mysecretpassword
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/software}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+api:
+  key: NFiHUjSRMsgCk2pzDnzyrgLUSsX64U
+  url: https://www.amdoren.com/api/currency.php
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+token:
+  converter:
+    principal-attribute: client_id
+    resource-id: backend
