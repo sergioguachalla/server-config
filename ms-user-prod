@@ -1,0 +1,33 @@
+server:
+  port: 8000
+
+spring:
+    application:
+        name: ms-users
+    datasource:
+      url: jdbc:postgresql://localhost:5432/cognito
+      username: postgres
+      password: 1234
+      jpa:
+        hibernate:
+          ddl-auto: none
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+keycloak:
+  auth-server-url: http://localhost:8080
+  autodetect-bearer-only: true
+  credentials:
+    secret: xLnnPpvGRBkekbUuVLnnudrkSVDTCzFc
+    realm: cognito-hub
+    resource: backend
+
+
+
+
+
+        
